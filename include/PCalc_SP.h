@@ -6,6 +6,19 @@
 // Add your PCalc_SP class definition here as a child class of PCalc
 // Be sure to overload the right methods from PCalc or it won't compile
 
+class PCalc_SP : public PCalc{
+
+public:
+    PCalc_SP::PCalc_SP(unsigned int count_to);
+    PCalc_SP::~PCalc_SP();
+
+protected:
+
+private:
+
+
+};
+
 // This class should manage the single process implementation of the prime number generator. I'd recommend
 // getting this working first, then tackling multithreaded
 
