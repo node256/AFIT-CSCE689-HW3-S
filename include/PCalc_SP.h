@@ -9,8 +9,10 @@
 class PCalc_SP : public PCalc{
 
 public:
-    PCalc_SP::PCalc_SP(unsigned int count_to);
-    PCalc_SP::~PCalc_SP();
+    PCalc_SP(unsigned int count_to);
+    ~PCalc_SP();
+
+    void markNonPrimes();
 
 protected:
 
