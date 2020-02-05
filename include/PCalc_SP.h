@@ -1,6 +1,7 @@
 #ifndef PCALC_SP_H
 #define PCALC_SP_H
 
+#include <cmath>
 #include "PCalc.h"
 
 // Add your PCalc_SP class definition here as a child class of PCalc

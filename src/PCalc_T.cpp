@@ -6,7 +6,7 @@ PCalc_T::PCalc_T(unsigned int array_size, unsigned int num_threads): PCalc(array
 }
 
 PCalc_T::~PCalc_T(){
-    
+    cleanup();
 }
 
 void PCalc_T::markNonPrimes(){
