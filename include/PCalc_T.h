@@ -1,6 +1,9 @@
 #ifndef PCALC_T_H
 #define PCALC_T_H
 
+#include <cmath>
+#include <mutex>
+#include <thread>
 #include "PCalc.h"
 
 // Your implementation of PCalc_T class should go here. 
@@ -14,12 +17,17 @@ public:
     PCalc_T(unsigned int array_size, unsigned int num_threads);
     ~PCalc_T();
 
+
+
     void markNonPrimes();
+    void tMark( unsigned int start, unsigned int end, unsigned int max);
 
 protected:
 
 private:
-
+    
+    unsigned int nThreads = 0;
+    std::mutex numLock;
 
 };
 // Call the parent constructor when initializing your constructor and pass in array_size. Then
