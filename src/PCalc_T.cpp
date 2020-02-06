@@ -20,7 +20,7 @@ void PCalc_T::markNonPrimes(){
     for ( unsigned int i = 0; i < nThreads; i++){
 
         unsigned int end = start + chunk;
-        thdArr[i] = std::thread ( PCalc_T::tMark, start, end, max);
+        thdArr[i] = std::thread( [=] { tMark( start, end, max); } );
         start = end;
     }
     for (auto &t : thdArr){
