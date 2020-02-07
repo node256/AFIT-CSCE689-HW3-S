@@ -1,6 +1,7 @@
 #ifndef PCALC_T_H
 #define PCALC_T_H
 
+#include <atomic>
 #include <cmath>
 #include <mutex>
 #include <thread>

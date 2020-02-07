@@ -31,11 +31,12 @@ void PCalc_T::markNonPrimes(){
 void PCalc_T::tMark( unsigned int start, unsigned int end, unsigned int max ){
 
     for ( unsigned int i = start; i <= end; i++){
-        if ( at(i) == 1 ){
+        if ( i % 2 == 0 ){
+            at(i) = false;
+        }
+        else if ( at(i) == 1 ){
             for ( unsigned int j = i * i; j < max; j+=i ){
-                numLock.lock();
                 at(j) = false;
-                numLock.unlock();
             }
         }
     }
