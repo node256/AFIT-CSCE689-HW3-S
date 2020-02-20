@@ -21,7 +21,7 @@ public:
 
 
     void markNonPrimes();
-    void tMark( unsigned int start, unsigned int end, unsigned int max);
+    void tMark( unsigned int start, unsigned int end );
 
 protected:
 

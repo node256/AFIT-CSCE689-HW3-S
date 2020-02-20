@@ -11,16 +11,12 @@ PCalc_T::~PCalc_T(){
 
 void PCalc_T::markNonPrimes(){
 
-    unsigned int max = array_size();
-    unsigned int sqrtLimit = sqrt(max);
-    unsigned int chunk = sqrtLimit / nThreads;
+    unsigned int end = array_size();
     std::thread thdArr[nThreads];
     unsigned int start = 2;
 
     for ( unsigned int i = 0; i < nThreads; i++){
-
-        unsigned int end = start + chunk;
-        thdArr[i] = std::thread( [=] { tMark( start, end, max); } );
+        thdArr[i] = std::thread( [=] { tMark(start + i, end); } );
         start = end;
     }
     for (auto &t : thdArr){
@@ -28,15 +24,12 @@ void PCalc_T::markNonPrimes(){
     }
 }
 
-void PCalc_T::tMark( unsigned int start, unsigned int end, unsigned int max ){
+void PCalc_T::tMark( unsigned int start, unsigned int end ){
 
     for ( unsigned int i = start; i <= end; i++){
-        if ( i % 2 == 0 ){
-            at(i) = false;
-        }
-        else if ( at(i) == 1 ){
-            for ( unsigned int j = i * i; j < max; j+=i ){
-                at(j) = false;
+        if ( at(i) == 1 ){
+            for ( unsigned int j = i * i; j < end; j+=i ){
+                if (at(j) == 1 ) at(j) = 0;
             }
         }
     }

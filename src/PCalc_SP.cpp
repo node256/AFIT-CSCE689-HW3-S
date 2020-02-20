@@ -11,15 +11,11 @@ PCalc_SP::~PCalc_SP(){
 }
 
 void PCalc_SP::markNonPrimes(){
-    unsigned int max = array_size();
-    unsigned int sqrtLimit = sqrt(max);
-    for ( unsigned int i = 2; i < sqrtLimit; i++){
-        if ( i % 2 == 0 ){
-            at(i) = false;
-        }
-        else if ( at(i) == 1){
+    unsigned int end = array_size();
+    for ( unsigned int i = 2; i < end; i++){
+        if ( at(i) == 1){
             for( unsigned int j = i * i; j < array_size(); j+=i){
-                at(j) = 0;
+                if (at(j) == 1 ) at(j) = 0;
             }
         }
     }
