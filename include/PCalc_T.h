@@ -18,16 +18,15 @@ public:
     PCalc_T(unsigned int array_size, unsigned int num_threads);
     ~PCalc_T();
 
-
-
     void markNonPrimes();
-    void tMark( unsigned int start, unsigned int end );
+    void tMark( unsigned int end, unsigned int stop );
 
 protected:
 
 private:
     
     unsigned int nThreads = 0;
+    unsigned int start = 2;
     std::mutex numLock;
 
 };

@@ -12,9 +12,10 @@ PCalc_SP::~PCalc_SP(){
 
 void PCalc_SP::markNonPrimes(){
     unsigned int end = array_size();
-    for ( unsigned int i = 2; i < end; i++){
+    unsigned int stop = sqrt(end);
+    for ( unsigned int i = 2; i < stop; i++){
         if ( at(i) == 1){
-            for( unsigned int j = i * i; j < array_size(); j+=i){
+            for( unsigned int j = i * i; j < end; j+=i){
                 if (at(j) == 1 ) at(j) = 0;
             }
         }

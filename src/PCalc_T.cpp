@@ -12,25 +12,30 @@ PCalc_T::~PCalc_T(){
 void PCalc_T::markNonPrimes(){
 
     unsigned int end = array_size();
+    unsigned int stop = sqrt(end);
     std::thread thdArr[nThreads];
-    unsigned int start = 2;
 
     for ( unsigned int i = 0; i < nThreads; i++){
-        thdArr[i] = std::thread( [=] { tMark(start + i, end); } );
-        start = end;
+        thdArr[i] = std::thread( [=] { tMark(end,stop); } );
     }
     for (auto &t : thdArr){
         t.join();
     }
 }
 
-void PCalc_T::tMark( unsigned int start, unsigned int end ){
+void PCalc_T::tMark( unsigned int end, unsigned int stop ){
 
-    for ( unsigned int i = start; i <= end; i++){
-        if ( at(i) == 1 ){
-            for ( unsigned int j = i * i; j < end; j+=i ){
-                if (at(j) == 1 ) at(j) = 0;
+    unsigned int pos = 0;
+    while ( pos <= stop){
+        numLock.lock();
+        pos = start;
+        start+= 1;
+        numLock.unlock();
+
+        if ( at(pos) == true){
+            for ( unsigned int j = pos * pos; j < end; j+=pos ){
+                if (at(j) == 1 ) at(j) = false;
             }
-        }
+        } 
     }
 }
